@@ -29,7 +29,22 @@
                     <a href="#contact" class="contact-link">Contact Us</a>
                     <a href="#choose-experience" class="btn btn-dark">Get Started</a>
                 </div>
+                <!-- Mobile Hamburger (show on mobile) -->
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
+            
+            <!-- Mobile Dropdown Menu (hidden by default) -->
+            <nav class="mobile-menu" id="mobile-menu">
+                <a href="#hero">Home</a>
+                <a href="#solutions">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact Us</a>
+            </nav>
         </nav>
     </header>
 
@@ -353,5 +368,35 @@
             }
         });
     </script>
-    </body>
+
+    <!-- New JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Toggle menu on hamburger click
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Close menu on outside click
+            document.addEventListener('click', (event) => {
+                if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+
+            // Close on escape key
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
