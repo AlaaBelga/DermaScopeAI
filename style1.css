@@ -319,24 +319,6 @@ footer .container { padding-top: 60px; padding-bottom: 40px; }
     border-radius: var(--border-radius-md);
 }
 
-/* --- Desktop Responsive Styles --- */
-@media (min-width: 768px) {
-    h1 { font-size: 4.5rem; }
-    #hero.container { grid-template-columns: 1fr 0.8fr; gap: 4rem; }
-    .hero-content, .left-align { text-align: left; }
-    .hero-buttons, .hero-features { justify-content: flex-start; }
-    .grid-2-col { grid-template-columns: 1fr 1fr; }
-    .large-card { grid-template-columns: 2fr 1fr; align-items: center; }
-    .steps-container { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-    .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
-    .footer-bottom { flex-direction: row; justify-content: space-between; }
-}
-
-@media (min-width: 1024px) {
-    .nav-links { display: flex; }
-    .contact-link { display: block; }
-}
-
 /* Base styles for hamburger and mobile menu */
 .hamburger {
     display: none; /* Hidden on desktop */
@@ -417,8 +399,12 @@ footer .container { padding-top: 60px; padding-bottom: 40px; }
         padding: 1rem;
     }
     
-    .desktop-nav {
-        display: none; /* Hide full nav on mobile */
+    .nav-links {
+        display: none; /* Hide nav-links on mobile */
+    }
+    
+    .nav-actions .contact-link {
+        display: none; /* Hide Contact Us on mobile (it's in the menu) */
     }
     
     .hamburger {
@@ -427,10 +413,6 @@ footer .container { padding-top: 60px; padding-bottom: 40px; }
     
     .mobile-menu.active {
         display: flex; /* Show when toggled */
-    }
-    
-    .nav-actions .contact-link {
-        display: none; /* Hide contact from actions on mobile since it's in menu */
     }
     
     /* Hero and other sections */
