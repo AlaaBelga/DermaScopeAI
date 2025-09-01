@@ -16,51 +16,144 @@
     --shadow: 0px 8px 16px -4px rgba(15, 23, 42, 0.05);
     --shadow-hover: 0px 10px 20px -4px rgba(15, 23, 42, 0.1);
 }
-/* Clean Mobile Fixes */
+/* Base styles for hamburger and mobile menu */
+.hamburger {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: #333; /* Match your theme */
+    transition: all 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobile-menu {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    position: absolute;
+    top: 100%; /* Below header */
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+.mobile-menu a {
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid #eee; /* Optional separator */
+    text-decoration: none;
+    color: #333;
+}
+
+.mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+/* Mobile Fixes */
 @media (max-width: 768px) {
-    /* Fix header visibility */
+    /* Header adjustments */
     .main-header {
         position: fixed;
         top: 0;
+        left: 0;
         width: 100%;
         z-index: 1000;
         background: white;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     
-    /* Stack nav items vertically */
-    .nav-wrapper {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+    body {
+        padding-top: 60px; /* Adjust based on your header height; measure in dev tools */
     }
     
-    /* Adjust hero for fixed header */
+    .nav-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
+    
+    .desktop-nav {
+        display: none; /* Hide full nav on mobile */
+    }
+    
+    .hamburger {
+        display: flex; /* Show hamburger on mobile */
+    }
+    
+    .mobile-menu.active {
+        display: flex; /* Show when toggled */
+    }
+    
+    .get-started {
+        /* Keep visible; adjust if needed */
+    }
+    
+    /* Hero and other sections */
     #hero {
-        padding-top: 120px;
         grid-template-columns: 1fr;
         text-align: center;
+        padding: 2rem 1rem;
     }
     
-    /* Center cards properly */
+    /* Cards: Full width fit, centered content */
     .grid-2-col {
         grid-template-columns: 1fr;
-        max-width: 500px;
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 100%; /* Fit the screen */
         margin: 0 auto;
+        padding: 0 1rem; /* Minimal padding for edges */
     }
     
     .card {
         width: 100%;
+        box-sizing: border-box;
+        text-align: center; /* Align content in the middle */
+        margin: 0 auto; /* Extra centering */
+    }
+    
+    .container {
+        padding: 0 1rem;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 1rem;
+        padding: 0 0.5rem;
     }
     
     .grid-2-col {
-        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+    
+    h1, h2 {
+        font-size: 1.5rem;
     }
 }
 /* ADDED FOR SMOOTH SCROLLING */
